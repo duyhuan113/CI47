@@ -16,6 +16,9 @@ view.setActiveScreen = (screenName) => {
 
                 controller.register(data);
             });
+            document.getElementById('turn-login').onclick = () => {
+                view.setActiveScreen('loginPage')
+            }
             break;
         case 'loginPage':
             document.getElementById('app').innerHTML = component.loginPage;
@@ -27,7 +30,12 @@ view.setActiveScreen = (screenName) => {
                     password: loginForm.password.value
                 }
                 controller.login(data);
-            })
+            });
+
+            document.getElementById('turn-register').onclick = () => {
+                view.setActiveScreen('registerPage')
+            }
             break;
+
     }
 }

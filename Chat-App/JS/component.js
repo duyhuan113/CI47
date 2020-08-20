@@ -31,7 +31,7 @@ component.registerPage = `
                 <div class="error" id="confirm-password-error"></div>
             </div>
             <div class="form-action">
-                <div>Already have an account? <span class="cursor-pointer">Login</span></div>
+                <div>Already have an account? <span id="turn-login" class="cursor-pointer">Login</span></div>
                 <button class="btn cursor-pointer" type="submit">Register</button>
             </div>
         </form>
@@ -51,7 +51,7 @@ component.loginPage = `
         <div class="error" id="password-error"></div>
     </div>
     <div class="form-action">
-        <div><span class="cursor-pointer">Create Account </span></div>
+        <div><span id="turn-register" class="cursor-pointer">Create Account </span></div>
         <button class="btn cursor-pointer" type="submit">Login</button>
     </div>
 </form>
