@@ -31,7 +31,7 @@ component.registerPage = `
                 <div class="error" id="confirm-password-error"></div>
             </div>
             <div class="form-action">
-                <div>Already have an account? <span id="turn-login" class="cursor-pointer">Login</span></div>
+                <div>Already have an account? <span id="redirect-login" class="cursor-pointer">Login</span></div>
                 <button class="btn cursor-pointer" type="submit">Register</button>
             </div>
         </form>
@@ -43,17 +43,26 @@ component.loginPage = `
     <div class="login-header">MindX Chat</div>
 
     <div class="input-wrapper">
-        <input type="text" placeholder="User Name" name="userName">
-        <div class="error" id="user-name-error"></div>
+        <input type="text" placeholder="Email..." name="email">
+        <div class="error" id="email-error"></div>
     </div>
     <div class="input-wrapper">
-        <input type="password" placeholder="Password" name="password">
+        <input type="password" placeholder="Password..." name="password">
         <div class="error" id="password-error"></div>
     </div>
     <div class="form-action">
-        <div><span id="turn-register" class="cursor-pointer">Create Account </span></div>
+        <div>Don't have Account?<span id="redirect-register" class="cursor-pointer"> Create Account </span></div>
         <button class="btn cursor-pointer" type="submit">Login</button>
     </div>
 </form>
-</div>;
-    `
+</div>;`
+
+component.chatPage = `
+<div class="chatPage-container">
+        <form action="" id="chat-form">
+            <div id="user-display"></div>
+            <div class="register-header">MindX Chat</div>
+            
+        </form>
+    </div>
+`

@@ -12,13 +12,12 @@ view.setActiveScreen = (screenName) => {
                     email: registerForm.email.value,
                     password: registerForm.password.value,
                     confirmPassword: registerForm.confirmPassword.value
-                }
-
+                };
                 controller.register(data);
             });
-            document.getElementById('turn-login').onclick = () => {
+            document.getElementById('redirect-login').addEventListener('click', () => {
                 view.setActiveScreen('loginPage')
-            }
+            });
             break;
         case 'loginPage':
             document.getElementById('app').innerHTML = component.loginPage;
@@ -26,16 +25,29 @@ view.setActiveScreen = (screenName) => {
             loginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const data = {
-                    userName: loginForm.userName.value,
+                    email: loginForm.email.value,
                     password: loginForm.password.value
-                }
+                };
                 controller.login(data);
             });
 
-            document.getElementById('turn-register').onclick = () => {
-                view.setActiveScreen('registerPage')
-            }
+            document.getElementById('redirect-register').addEventListener('click', () => {
+                view.setActiveScreen('registerPage');
+            });
+            break;
+
+        case 'chatPage':
+            document.getElementById('app').innerHTML = component.chatPage;
+            document.getElementById('user-display').innerHTML = ` Welcome, ${model.currentUser.displayName}!!!`;
             break;
 
     }
+}
+
+view.setUserName = (elementId, content) => {
+    document.getElementById(elementId).innerHTML = content;
+}
+
+view.setErrorMessage = (elementId, content) => {
+    document.getElementById(elementId).innerText = content;
 }
