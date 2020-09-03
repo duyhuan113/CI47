@@ -31,3 +31,7 @@
 .form-action {
     align-items: center;
 }
+
+.name-wrapper .input-wrapper {
+    width: 48%;
+}

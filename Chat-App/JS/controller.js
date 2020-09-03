@@ -1,6 +1,5 @@
 const controller = {};
 
-
 controller.register = (data) => {
     view.setErrorMessage('first-name-error', data.firstName === '' ? 'Please Enter Your First Name' : '');
     view.setErrorMessage('last-name-error', data.lastName === '' ? 'Please Enter Your Last Name' : '');

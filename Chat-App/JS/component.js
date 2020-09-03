@@ -55,14 +55,29 @@ component.loginPage = `
         <button class="btn cursor-pointer" type="submit">Login</button>
     </div>
 </form>
-</div>;`
+</div>`;
 
 component.chatPage = `
-<div class="chatPage-container">
-        <form action="" id="chat-form">
-            <div id="user-display"></div>
-            <div class="register-header">MindX Chat</div>
-            
-        </form>
+<div class="chat-container">
+        <div class="header">
+            MindX Chat
+        </div>
+        <div class="main">
+            <div class="conversation-detail">
+                <div class="conversation-title">
+                    <div id="conversationsTitle"></div>
+                </div>
+                <div class="list-messages">
+                    
+                </div>
+
+                <form id="send-message-form">
+                    <div class="input-wrapper">
+                        <input id="inputMessage" type="text" placeholder="Type Message..." name="message"></input>
+                    </div>
+                    <button type="submit"><i class="far fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
     </div>
-`
+`;
