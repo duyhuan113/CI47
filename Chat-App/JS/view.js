@@ -153,10 +153,6 @@ view.addConversation = (conversation) => {
     <div class="number-of-user">${conversation.users.length} Users</div>
     `;
     const mediaQuery = window.matchMedia('(max-width: 768px)');
-    // if (mediaQuery.matches) {
-    //     conversationWrapper.firstElementChild.innerText = conversation.titles.charAt(0).toUpperCase();
-    //     document.getElementById('create-conversation').innerText = '+';
-    // }
     mediaQuery.addListener((e) => {
         if (mediaQuery.matches) {
             conversationWrapper.firstElementChild.innerText = conversation.titles.charAt(0).toUpperCase();
