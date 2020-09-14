@@ -1,5 +1,5 @@
 const view = {};
-view.setActiveScreen = (screenName) => {
+view.setActiveScreen = (screenName, fromCreateConversation = false) => {
     switch (screenName) {
         case 'registerPage':
             document.getElementById('app').innerHTML = component.registerPage;
@@ -52,10 +52,43 @@ view.setActiveScreen = (screenName) => {
                     sendMessageForm.message.value = '';
                 }
             })
-            model.getConversations();
-            model.listenConversationChange();
+            document.getElementById('create-conversation').addEventListener('click', () => {
+                view.setActiveScreen('createConversationPage')
+            })
+            if (fromCreateConversation) {
+                view.showCurrentConversation();
+                view.showConversations();
+            } else {
+                model.getConversations();
+                model.listenConversationChange();
+            }
 
+            const addUser = document.getElementById('add-user-form');
+            addUser.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = addUser.email.value
+                controller.addUser(data);
+            })
             break;
+
+        case 'createConversationPage':
+            document.getElementById('app').innerHTML = component.createConversationPage;
+            document.getElementById('redirect-to-chat').addEventListener('click', () => {
+                view.setActiveScreen('chatPage', true);
+            })
+
+            const createConversationForm = document.getElementById('create-conversation-form');
+            createConversationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = {
+                    titles: createConversationForm.title.value,
+                    email: createConversationForm.email.value
+                }
+                controller.createConversation(data);
+            })
+            break;
+
+
     }
 }
 
@@ -80,9 +113,16 @@ view.addMessage = (message) => {
     document.querySelector('.list-messages').appendChild(messageWrapper);
 }
 
-view.showCurrentConversation = async() => {
+view.showCurrentConversation = () => {
+    document.querySelector('.conversation-title').innerHTML = model.currentConversation.titles;
+    document.querySelector('.list-messages').innerHTML = '';
     for (message of model.currentConversation.messages) {
         view.addMessage(message);
+    }
+
+    document.querySelector('.list-users').innerHTML = '';
+    for (user of model.currentConversation.users) {
+        view.addUser(user);
     }
     view.scrollToEndElement();
 }
@@ -94,4 +134,51 @@ view.setErrorMessage = (elementId, content) => {
 view.scrollToEndElement = () => {
     const element = document.querySelector('.list-messages');
     element.scrollTop = element.scrollHeight;
+}
+
+view.showConversations = () => {
+    for (conversation of model.conversations) {
+        view.addConversation(conversation)
+    }
+}
+view.addConversation = (conversation) => {
+    const conversationWrapper = document.createElement('div');
+    conversationWrapper.classList.add('conversation');
+    conversationWrapper.classList.add('cursor-pointer');
+    if (conversation.id === model.currentConversation.id) {
+        conversationWrapper.classList.add('current');
+    }
+    conversationWrapper.innerHTML = `
+    <div class="left-conversation-title">${conversation.titles}</div>
+    <div class="number-of-user">${conversation.users.length} Users</div>
+    `;
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    // if (mediaQuery.matches) {
+    //     conversationWrapper.firstElementChild.innerText = conversation.titles.charAt(0).toUpperCase();
+    //     document.getElementById('create-conversation').innerText = '+';
+    // }
+    mediaQuery.addListener((e) => {
+        if (mediaQuery.matches) {
+            conversationWrapper.firstElementChild.innerText = conversation.titles.charAt(0).toUpperCase();
+            document.getElementById('create-conversation').innerText = '+';
+        } else {
+            conversationWrapper.firstElementChild.innerText = conversation.titles;
+            document.getElementById('create-conversation').innerText = '+ New Conversation';
+        }
+    })
+    conversationWrapper.addEventListener('click', () => {
+        model.currentConversation = model.conversations.filter(item => item.id === conversation.id)[0];
+        view.showCurrentConversation();
+        document.querySelector('.conversation.current').classList.remove('current');
+        conversationWrapper.classList.add('current');
+    })
+    document.querySelector('.list-conversations').appendChild(conversationWrapper);
+}
+
+view.addUser = (user) => {
+    const addWrraper = document.createElement('div');
+    addWrraper.classList.add('user-email');
+    addWrraper.innerHTML = user;
+
+    document.querySelector('.list-users').appendChild(addWrraper);
 }

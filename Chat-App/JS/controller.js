@@ -57,7 +57,33 @@ controller.login = (data) => {
     };
 };
 
+controller.createConversation = ({ titles, email }) => {
+    if (titles.trim() === '') {
+        view.setErrorMessage('create-conversation-title-error', 'Please Enter Title');
+    } else {
+        view.setErrorMessage('create-conversation-title-error', '');
+    }
+    if (email.trim() === '') {
+        view.setErrorMessage('create-conversation-email-error', 'Please Enter Email');
+    } else {
+        view.setErrorMessage('create-conversation-email-error', '');
+    }
 
+    if (titles.trim() !== '' && email.trim() !== '') {
+        model.createConversation({ titles, email })
+    }
+
+
+}
+controller.addUser = (email) => {
+    if (email.trim() === '') {
+        view.setErrorMessage('email-error', 'Please Enter Email');
+    } else {
+        view.setErrorMessage('email-error', '');
+        model.addUser(email);
+    }
+
+}
 
 function validateEmail(email) {
     const emailFomat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

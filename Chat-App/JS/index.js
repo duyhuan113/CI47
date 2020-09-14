@@ -29,7 +29,7 @@ window.onload = () => {
             view.setActiveScreen('loginPage');
         }
     });
-    view.setActiveScreen('loginPage');
+
 
 };
 

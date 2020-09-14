@@ -21,12 +21,14 @@
 
 .chat-container .main {
     height: calc(100vh - 64px);
+    display: flex;
 }
 
 .chat-container .conversation-detail {
     height: 100%;
     display: flex;
     flex-direction: column;
+    width: 70%;
 }
 
 .chat-container .list-messages {
@@ -54,6 +56,7 @@
 
 #send-message-form .input-wrapper input {
     padding: 22px 20px;
+    border-left: none;
 }
 
 .list-messages .message .content {
@@ -82,4 +85,74 @@
 .list-messages {
     padding: 10px;
     overflow-y: auto;
+}
+
+.chat-container .aside-left {
+    width: 15%;
+    height: 100%;
+    border-right: 1px solid #dbdbdb;
+}
+
+.chat-container .aside-left .create-conversations {
+    display: flex;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.chat-container .aside-left .list-conversations .conversation {
+    padding: 10px;
+}
+
+.chat-container .aside-left .list-conversations .conversation.current {
+    background: #dbdbdb;
+}
+
+.chat-container .aside-right {
+    border-left: 1px solid #dbdbdb;
+    width: 15%;
+    padding: 10px;
+}
+
+
+/* doan nay neu noi dung qua dai se bi an va hien thi ... */
+
+.chat-container .aside-right .user-email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+    .aside-right {
+        display: none;
+    }
+    .chat-container .conversation-detail {
+        width: 85%;
+    }
+    .chat-container .number-of-user {
+        display: none;
+    }
+    .chat-container .aside-left .list-conversations .conversation {
+        height: 64px;
+        width: 64px;
+        border-radius: 50px;
+        padding: 0;
+        border: 1px solid #dbdbdb;
+        text-align: center;
+        line-height: 64px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .chat-container .aside-left .list-conversations .conversation:first-child {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .chat-container .aside-left .list-conversations .conversation {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+    }
 }
