@@ -31,3 +31,11 @@
 .form-action {
     align-items: center;
 }
+
+@media screen and (max-width: 576px) {
+    .login-container #login-form {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+    }
+}
