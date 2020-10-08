@@ -39,6 +39,7 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
         case 'chatPage':
             document.getElementById('app').innerHTML = component.chatPage;
             const sendMessageForm = document.getElementById('send-message-form');
+            // đoạn này gửi tin nhắn
             sendMessageForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const message = {
@@ -52,6 +53,8 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
                     sendMessageForm.message.value = '';
                 }
             })
+
+            //đoạn này tạo conversations mới
             document.getElementById('create-conversation').addEventListener('click', () => {
                 view.setActiveScreen('createConversationPage')
             })
@@ -62,7 +65,7 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
                 model.getConversations();
                 model.listenConversationChange();
             }
-
+            //đoạn này thêm user vào conversation
             const addUser = document.getElementById('add-user-form');
             addUser.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -87,8 +90,6 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
                 controller.createConversation(data);
             })
             break;
-
-
     }
 }
 

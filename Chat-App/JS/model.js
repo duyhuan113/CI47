@@ -13,17 +13,15 @@ model.register = async(data) => {
         firebase.auth().currentUser.sendEmailVerification();
     } catch (err) {
         alert(err.message);
-
     }
 };
 
 model.login = (data) => {
     try {
         firebase.auth().signInWithEmailAndPassword(data.email, data.password);
-
     } catch (err) {
         console.log(err);
-        alert(err.message)
+        alert(err.message);
     }
 };
 
@@ -71,14 +69,11 @@ model.listenConversationChange = () => {
                     }
                 }
             }
-
             if (oneChange.type === 'added') {
                 model.conversations.push(docData);
                 view.addConversation(docData);
             }
-
         }
-
     });
 };
 

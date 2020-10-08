@@ -59,47 +59,47 @@ component.loginPage = `
 
 component.chatPage = `
 <div class="chat-container">
-<div class="header">
-    MindX Chat
-</div>
-<div class="main">
-    <div class="aside-left">
-        <div class="create-conversations">
-            <button id="create-conversation" class="btn cursor-pointer">New Conversation</button>
-        </div>
-        <div class="list-conversations">
-
-        </div>
+    <div class="header">
+        MindX Chat
     </div>
-    <div class="conversation-detail">
-        <div class="conversation-title">
-
-        </div>
-        <div class="list-messages">
-
-        </div>
-
-        <form id="send-message-form">
-            <div class="input-wrapper">
-                <input id="inputMessage" type="text" placeholder="Type Message..." name="message"></input>
+    <div class="main">
+        <div class="aside-left">
+            <div class="create-conversations">
+                <button id="create-conversation" class="btn cursor-pointer">New Conversation</button>
             </div>
-            <button type="submit"><i class="far fa-paper-plane"></i></button>
-        </form>
-    </div>
-    <div class="aside-right">
-        <div class="list-users">
-           
+            <div class="list-conversations">
+
+            </div>
         </div>
-        <form class="mt-1" id="add-user-form">
-            <div class="input-wrapper">
-                <input type="text" name="email" placeholder="Friend Email">
-                <div id="email-error" class="error"></div>
+        <div class="conversation-detail">
+            <div class="conversation-title">
+
+            </div>
+            <div class="list-messages">
+
             </div>
 
-            <button class="btn ">Add</button>
-        </form>
+            <form id="send-message-form">
+                <div class="input-wrapper">
+                    <input id="inputMessage" type="text" placeholder="Type Message..." name="message"></input>
+                </div>
+                <button type="submit"><i class="far fa-paper-plane"></i></button>
+            </form>
+        </div>
+        <div class="aside-right">
+            <div class="list-users">
+            
+            </div>
+            <form class="mt-1" id="add-user-form">
+                <div class="input-wrapper">
+                    <input type="text" name="email" placeholder="Friend Email">
+                    <div id="email-error" class="error"></div>
+                </div>
+
+                <button class="btn ">Add</button>
+            </form>
+        </div>
     </div>
-</div>
 </div>
 `;
 

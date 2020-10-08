@@ -29,11 +29,21 @@ window.onload = () => {
             view.setActiveScreen('loginPage');
         }
     });
-
-
 };
 
+const getManyDocment = (response) => {
+    const listData = [];
+    for (const doc of response.docs) {
+        listData.push(getOneDocument(doc));
+    }
+    return listData;
+};
 
+const getOneDocument = (response) => {
+    const data = response.data();
+    data.id = response.id;
+    return data;
+};
 
 
 // const updateMessage = async(message) => {
@@ -83,19 +93,3 @@ window.onload = () => {
 //     const idToDelete = 'jQiVBJtDdgTjqW0c4pjq';
 //     //firebase.firestore().collection('users').doc(idToDelete).delete();
 // };
-
-
-
-const getManyDocment = (response) => {
-    const listData = [];
-    for (const doc of response.docs) {
-        listData.push(getOneDocument(doc));
-    }
-    return listData;
-};
-
-const getOneDocument = (response) => {
-    const data = response.data();
-    data.id = response.id;
-    return data;
-};
